@@ -1,111 +1,302 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #007AFF;
+  --danger-color: #FF3B30;
+  --success-color: #34C759;
+  --background-color: #F2F2F7;
+  --surface-color: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #8E8E93;
+  --border-color: #C6C6C8;
+  --modal-overlay: rgba(0, 0, 0, 0.4);
+}
 
 body {
-  background: #f2f2f2;
-  color: #444;
+  background: var(--background-color);
+  color: var(--text-primary);
   margin: 0;
-}
-body * {
-  font-family: "Poppins";
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* header */
 header {
   text-align: center;
-  background: #e7e7e7;
-  padding-top: 20px;
+  background: var(--surface-color);
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 header img {
-  max-width: 60px;
+  max-width: 50px;
   transform: rotate(-10deg);
 }
 header h1 {
   margin: 0;
-  font-size: 2em;
-  padding-top: 25px;
-  margin-left: 15px;
-  color: #777;
-  transform: rotate(2deg);
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 12px;
+  color: var(--text-primary);
 }
-.task-list {
+
+/* Main content */
+main {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding-bottom: 40px;
 }
-.tasks{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+
+.task-list {
+  padding: 0 16px;
 }
-.task{
+.task-list > p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.task {
   display: flex;
-  gap: 10px;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: var(--surface-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.task span{
+
+.task:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.task h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.icons {
+  display: flex;
+  gap: 16px;
+}
+
+.icons span {
   user-select: none;
   cursor: pointer;
-}
-.task span.active{
-  color: red;
+  font-size: 20px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
 }
 
-.filter{
+.icons span:hover {
+  color: var(--text-primary);
+}
+
+.icons span.active {
+  color: var(--danger-color);
+}
+
+.icons span:first-child:hover {
+  color: var(--danger-color);
+}
+
+.filter {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin: 20px 0;
   flex-wrap: wrap;
 }
-.filter button{
-  padding: 10px;
+
+.filter button {
+  padding: 8px 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  background-color: #ccc;
-}
-.filter button:hover{
-  background-color: #ccc;
-}
-.filter button.active{
-  background-color: #444;
-  color: #fff;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
 }
 
-.new-task-form{
-background: #f2f2f2;
-padding: 20px 0;
+.filter button.active {
+  background-color: var(--primary-color);
+  color: white;
 }
-form{
-  width: 370px;
-  margin: 0 auto;
+
+.new-task-form {
+  background: var(--surface-color);
+  padding: 20px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+form {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
 }
-input{
+
+input {
   flex-grow: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #fff;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--surface-color);
+  font-size: 16px;
 }
-button{
-  padding: 10px;
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+button {
+  padding: 12px 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  background-color: #FFD24D;
-  color: #352929;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--modal-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-container {
+  background-color: var(--surface-color);
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content {
+  padding: 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-content p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.modal-actions {
+  display: flex;
+}
+
+.modal-actions button {
+  flex: 1;
+  border-radius: 0;
+  background: transparent;
+  color: var(--primary-color);
+  font-weight: 600;
+  padding: 16px;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+.modal-actions button:first-child {
+  border-right: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.modal-actions .confirm-btn {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+/* Toast Styles */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1001;
+  animation: slideUp 0.3s ease;
+}
+
+.toast.success {
+  background-color: var(--success-color);
+}
+
+.toast.error {
+  background-color: var(--danger-color);
+}
+
+.toast p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .filter {
+    padding: 0 16px;
+  }
+  
+  form {
+    flex-direction: column;
+  }
+  
+  button {
+    width: 100%;
+  }
 }
