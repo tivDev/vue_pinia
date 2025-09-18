@@ -286,6 +286,7 @@ button:hover {
 
 /* Toast Styles */
 .toast {
+  width: 250px;
   position: fixed;
   bottom: 30px;
   left: 50%;
@@ -295,8 +296,10 @@ button:hover {
   padding: 12px 20px;
   border-radius: 12px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  flex-wrap: nowrap;
+  gap: 5px;
   z-index: 1001;
   animation: slideUp 0.3s ease;
 }
@@ -310,6 +313,7 @@ button:hover {
 }
 
 .toast p {
+  padding: 0;
   margin: 0;
   font-size: 14px;
 }
