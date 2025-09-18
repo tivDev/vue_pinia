@@ -9,7 +9,10 @@
 
     <!-- new task form -->
      <div class="new-task-form">
-       <TaskForm />
+       <TaskForm 
+         @validation-error="showValidationError" 
+         @task-created="showSuccessMessage" 
+       />
      </div>
     <nav class="filter">
       <button :class="{ active: filter === 'all' }" @click="filter = 'all'">All</button>
@@ -80,6 +83,18 @@ export default {
       showConfirmModal.value = true
     }
 
+    const showValidationError = (message) => {
+      showToast.value = true
+      toastMessage.value = message
+      toastType.value = 'error'
+    }
+
+    const showSuccessMessage = (message) => {
+      showToast.value = true
+      toastMessage.value = message
+      toastType.value = 'success'
+    }
+
     const confirmDelete = () => {
       if (taskToDelete.value) {
         TaskStore.deleteTask(taskToDelete.value)
@@ -105,7 +120,9 @@ export default {
       toastType,
       openConfirmModal,
       confirmDelete,
-      cancelDelete
+      cancelDelete,
+      showValidationError,
+      showSuccessMessage
     }
   }
 }
