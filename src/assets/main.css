@@ -12,6 +12,11 @@
   --modal-overlay: rgba(0, 0, 0, 0.4);
 }
 
+*{
+   -webkit-tap-highlight-color: transparent;
+   -moz-tap-highlight-color: transparent;
+}
+
 body {
   background: var(--background-color);
   color: var(--text-primary);
